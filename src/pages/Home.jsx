@@ -13,6 +13,15 @@ import blog1 from "../assets/blog-1.jpg";
 import blog2 from "../assets/blog-2.jpg";
 import blog3 from "../assets/blog-3.jpg";
 import blog4 from "../assets/blog-4.jpg";
+import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
+
+import company from "../assets/1.png";
+import company2 from "../assets/2.png";
+import company3 from "../assets/3.png";
+import company4 from "../assets/4.png";
+import company5 from "../assets/5.png";
+import company6 from "../assets/6.png";
 
 const Home = () => {
   useEffect(() => {
@@ -96,16 +105,33 @@ const Home = () => {
       <section className="mb-35 w-11/12   lg:w-8/12 mx-auto">
         <div className="grid grid-cols-1  lg:grid-cols-2 gap-20 justify-between">
           <div className=" flex flex-col justify-center  space-y-3">
-            <h1 className="text-3xl font-semibold space-y-1  ">
-              Experience a quicker, simpler, and
-              <br></br>
-              <span className="mt-1"> more effective job search</span>
-            </h1>
-            <p className="text-lg  ">
-              Our platform offers intuitive tools, personalized job
-              recommendations, and valuable resources to streamline your job
-              search process.
-            </p>
+            <motion.p
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-lg font-semibold"
+            >
+              <h1 className="text-3xl font-semibold space-y-1  ">
+                Experience a quicker, simpler, and
+                <br></br>
+                <span className="mt-1"> more effective job search</span>
+              </h1>
+            </motion.p>
+
+            {/* Slide in from right */}
+            <motion.p
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-lg font-semibold"
+            >
+              <p className="text-lg  ">
+                Our platform offers intuitive tools, personalized job
+                recommendations, and valuable resources to streamline your job
+                search process.
+              </p>
+            </motion.p>
+
             <div className="mt-3 text-xs">
               <p className="text-lg  ">
                 Easily browse job listings with smart search and filters
@@ -169,7 +195,10 @@ const Home = () => {
           Aliquam lacinia diam quis lacus euismod
         </p>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+          <div
+            data-aos="fade-up"
+            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+          >
             {/* Image container with hover scale */}
             <div className="overflow-hidden">
               <img
@@ -192,7 +221,10 @@ const Home = () => {
             </div>
           </div>
 
-          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+          <div
+            data-aos="fade-up"
+            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+          >
             {/* Image container with hover scale */}
             <div className="overflow-hidden">
               <img
@@ -215,7 +247,10 @@ const Home = () => {
             </div>
           </div>
 
-          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+          <div
+            data-aos="fade-up"
+            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+          >
             {/* Image container with hover scale */}
             <div className="overflow-hidden">
               <img
@@ -238,7 +273,10 @@ const Home = () => {
             </div>
           </div>
 
-          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+          <div
+            data-aos="fade-up"
+            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+          >
             {/* Image container with hover scale */}
             <div className="overflow-hidden">
               <img
@@ -261,6 +299,58 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="w-11/12 mx-auto mb-35">
+        <h1 className="text-3xl font-semibold text-center ">
+          Trusted by the world’s best Company
+        </h1>
+        <Marquee className="">
+          <div className="flex items-center gap-x-25 mt-15">
+            <img src={company} alt="Company 1" className="h-8 object-contain" />
+            <img
+              src={company2}
+              alt="Company 2"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company3}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company4}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company5}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company6}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img src={company} alt="Company 1" className="h-8 object-contain" />
+            <img
+              src={company2}
+              alt="Company 2"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company3}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company4}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+          </div>
+        </Marquee>
       </section>
     </div>
   );

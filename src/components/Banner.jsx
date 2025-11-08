@@ -18,9 +18,9 @@ const Banner = () => {
         loop={true}
       >
         <SwiperSlide>
-          <div className="   md:flex w-11/12 mx-auto justify-between items-center py-10 ">
+          <div className=" flex flex-col-reverse  md:flex-row w-11/12 mx-auto justify-between items-center py-10 ">
             <div>
-              <h1 className="text-3xl font-semibold  mt-28">
+              <h1 className="text-2xl md:text-3xl font-semibold mt-5 md:mt-28">
                 <span >
                   Connect Skilled Freelancers{" "}
                 </span>
@@ -68,9 +68,9 @@ const Banner = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="   md:flex w-11/12 mx-auto justify-between items-center py-10 ">
+          <div className=" flex flex-col-reverse    md:flex-row w-11/12 mx-auto justify-between items-center py-10 ">
             <div>
-              <h1 className="text-3xl font-semibold  mt-28 ">
+              <h1 className=" text-2xl md:text-3xl font-semibold mt-5 md:mt-28 ">
                 <span >
                   A Modern Freelance Platform To{" "}
                 </span>
@@ -120,9 +120,9 @@ const Banner = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="   md:flex w-11/12 mx-auto justify-between items-center py-10 ">
+          <div className=" flex flex-col-reverse  md:flex-row w-11/12 mx-auto justify-between items-center py-10 ">
             <div>
-              <h1 className="text-3xl font-semibold  mt-28">
+              <h1 className=" text-2xl md:text-3xl font-semibold mt-5 md:mt-28">
                 <span >
                   {" "}
                   Find Top Freelancers, Collaborate{" "}
@@ -173,9 +173,9 @@ const Banner = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="   md:flex w-11/12 mx-auto justify-between items-center py-10 ">
+          <div className=" flex flex-col-reverse   md:flex-row w-11/12 mx-auto justify-between items-center py-10 ">
             <div>
-              <h1 className="text-3xl font-semibold  mt-28 ">
+              <h1 className="text-2xl md:text-3xl font-semibold mt-5 md:mt-28 ">
                 <span> Empowering Independent Talents To </span> <br></br>
                 <span> Earn, Create, And Work Freely</span>{" "}
               </h1>
