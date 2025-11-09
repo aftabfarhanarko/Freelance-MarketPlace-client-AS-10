@@ -1,9 +1,13 @@
 import React from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
+import usePrivetApi from "../Hooks/PriverAPI";
+import { useNavigate } from "react-router";
 
 const AddJod = () => {
-  const {user} = useAuth()
+  const { user } = useAuth();
+  const priverApi = usePrivetApi();
+  const pageNaviget = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,12 +18,25 @@ const AddJod = () => {
     const coverImage = e.target.coverImage.value;
     const userEmail = user.email;
     const create_at = new Date();
-    console.log({title, postedBy,category,summary, coverImage, userEmail, create_at});
-    
 
+    const postDataNow = {
+      title,
+      postedBy,
+      category,
+      create_at,
+      userEmail,
+      coverImage,
+      summary,
+    };
+    // console.log({title, postedBy,category,summary, coverImage, userEmail, create_at});
+
+    priverApi.post("jobs", postDataNow)
+    .then(result => {
+        console.log("This is Data", result.data);
+      pageNaviget("/")
+    })
   };
 
- 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="text-center mb-10">
