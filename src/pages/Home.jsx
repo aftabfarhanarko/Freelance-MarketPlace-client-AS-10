@@ -1198,6 +1198,11 @@ const Home = () => {
         </div>
       </section>
 
+        {/* Website About Sections */}
+      <section>
+        <h1>“About The Platform</h1>
+      </section>
+
       <section className="w-11/12 mx-auto mb-35">
         <h1 className="text-3xl font-semibold text-center ">
           Trusted by the world’s best Company

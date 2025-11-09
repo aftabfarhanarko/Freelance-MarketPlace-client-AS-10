@@ -34,17 +34,19 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className=" menu-horizontal px-1 flex gap-8 list-none text-lg font-medium">
               <li>
-                <NavLink>Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink>All Jobs</NavLink>
+                <NavLink to="/alljob">All Jobs</NavLink>
               </li>
               <li>
-                <NavLink>Add a Job</NavLink>
+                <NavLink to="/creatJob">Add a Job</NavLink>
               </li>
-              <li>
-                <NavLink>My Accepted Tasks</NavLink>
-              </li>
+              {user && (
+                <li>
+                  <NavLink to="/accecptjob">My Accepted Tasks</NavLink>
+                </li>
+              )}
             </ul>
           </div>
           <div className="navbar-end">
@@ -201,24 +203,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-/* <button class="relative flex items-center gap-1 py-4 px-9 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-full shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                Modern Button
-              </span>
-
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button> */

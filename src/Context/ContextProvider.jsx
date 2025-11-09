@@ -31,15 +31,12 @@ const ContextProvider = ({ children }) => {
   };
 
   const emailpasswordLoginUser = (email, password) => {
-    return  signInWithEmailAndPassword(auth, email, password);
-  }
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   const logOutUser = () => {
     return signOut(auth);
-  }
-
-
-
+  };
 
   useEffect(() => {
     setLoding(false);
@@ -60,8 +57,7 @@ const ContextProvider = ({ children }) => {
     user,
     loding,
     emailpasswordLoginUser,
-    logOutUser
-
+    logOutUser,
   };
   return (
     <AuthContext.Provider value={allInfo}>{children}</AuthContext.Provider>
