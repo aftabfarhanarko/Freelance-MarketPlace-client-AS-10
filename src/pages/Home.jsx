@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
-import { HiOutlineUsers } from "react-icons/hi";
+import {
+  HiOutlineArrowLeft,
+  HiOutlineArrowRight,
+  HiOutlineUsers,
+} from "react-icons/hi";
 import { FaRegHandshake } from "react-icons/fa6";
 import { HiOutlineCreditCard } from "react-icons/hi";
 import { HiOutlineSupport } from "react-icons/hi";
@@ -26,11 +30,21 @@ import company6 from "../assets/6.png";
 import pic1 from "../assets/man2.png";
 import pic2 from "../assets/man3.png";
 import pic3 from "../assets/women1.png";
-import pic4 from "../assets/women1.png";
+import pic4 from "../assets/women7.jpg";
+import pic7 from "../assets/postes.png";
 import pic5 from "../assets/women2.png";
 import pic6 from "../assets/women4.png";
+import CountUp from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
+import { Briefcase, Users, FileText, Building2 } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 const Home = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
   useEffect(() => {
     AOS.init({
       duration: 1000, // animation duration in ms
@@ -59,7 +73,7 @@ const Home = () => {
             >
               <div className="group-hover:animate-bounce">
                 {" "}
-                <HiOutlineUsers className="w-11 h-8 mx-auto text-green-600" />
+                <HiOutlineUsers className="w-11 h-8 mx-auto animate-pulse text-gray-900" />
               </div>
 
               <h2 className="text-lg font-medium mt-3">Post a job</h2>
@@ -75,8 +89,7 @@ const Home = () => {
                     transition-all duration-300 hover:bg-base-200 group"
             >
               <div className="group-hover:animate-bounce">
-                
-                <FaRegHandshake className="w-11 h-8 mx-auto  text-green-600"></FaRegHandshake>
+                <FaRegHandshake className="w-11 h-8 mx-auto animate-pulse text-gray-900"></FaRegHandshake>
               </div>
               <h2 className="text-lg font-medium">Choose freelancers</h2>
               <p className="text-gray-800 text-md">
@@ -91,7 +104,7 @@ const Home = () => {
                     transition-all duration-300 hover:bg-base-200 group"
             >
               <div className="group-hover:animate-bounce">
-                <HiOutlineCreditCard className="w-11 h-8 mx-auto text-green-600"></HiOutlineCreditCard>
+                <HiOutlineCreditCard className="w-11 h-8 mx-auto animate-pulse text-gray-900"></HiOutlineCreditCard>
               </div>
               <h2 className="text-lg font-medium">Pay safely</h2>
               <p className="text-gray-800 text-md">
@@ -105,7 +118,7 @@ const Home = () => {
                     transition-all duration-300 hover:bg-base-200 group"
             >
               <div className="group-hover:animate-bounce">
-                <HiOutlineSupport className="w-11 h-8 mx-auto text-green-600"></HiOutlineSupport>
+                <HiOutlineSupport className="w-11 h-8 mx-auto animate-pulse text-gray-900"></HiOutlineSupport>
               </div>
               <h2 className="text-lg font-medium">We’re here to help</h2>
               <p className="text-gray-800 text-md">
@@ -117,6 +130,11 @@ const Home = () => {
         </div>
       </section>
 
+       
+       <section className="w-11/12 mx-auto mb-35">
+        <h1 className="text-2xl md:text-3xl text-gray-900 text-center font-semibold" >Letas 6 Job Detlise</h1>
+       </section>
+ 
       <section className="mb-35 w-11/12   lg:w-8/12 mx-auto">
         <div className="grid grid-cols-1  lg:grid-cols-2 gap-20 justify-between">
           <div className=" flex flex-col justify-center  space-y-3">
@@ -353,72 +371,104 @@ const Home = () => {
           </div>
         </div>
       </section>
+     
+     <section className="w-full bg-[#f6faf7] py-20 px-5 mb-35">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
+          {/* Left Side */}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+              Find the Perfect Freelancer for Your Next Big Project
+            </h2>
+            <p className="text-gray-500 mb-8">
+              Freeio is a modern freelance marketplace that connects talented
+              professionals with clients around the world. Whether you’re a
+              designer, developer, writer, or marketer — we help you grow your
+              business and showcase your skills.
+            </p>
 
-      <section className="w-11/12 mx-auto mb-35">
-        <h1 className="text-3xl font-semibold text-center ">
-          Trusted by the world’s best Company
-        </h1>
-          <p className="text-lg mt-2 mb-15 text-center">
-       Building lasting partnerships through quality, trust, and innovation
-          </p>
-       
-        <Marquee className="">
-          <div className="flex items-center gap-x-25 mt-15">
-            <img src={company} alt="Company 1" className="h-8 object-contain" />
-            <img
-              src={company2}
-              alt="Company 2"
-              className="h-8 object-contain"
-            />
-            <img
-              src={company3}
-              alt="Company 3"
-              className="h-8 object-contain"
-            />
-            <img
-              src={company4}
-              alt="Company 3"
-              className="h-8 object-contain"
-            />
-            <img
-              src={company5}
-              alt="Company 3"
-              className="h-8 object-contain"
-            />
-            <img
-              src={company6}
-              alt="Company 3"
-              className="h-8 object-contain"
-            />
-            <img src={company} alt="Company 1" className="h-8 object-contain" />
-            <img
-              src={company2}
-              alt="Company 2"
-              className="h-8 object-contain"
-            />
-            <img
-              src={company3}
-              alt="Company 3"
-              className="h-8 object-contain"
-            />
-            <img
-              src={company4}
-              alt="Company 3"
-              className="h-8 object-contain"
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  4.9/
+                  <CountUp start={0} end={5} />{" "}
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  Clients rate professionals on Freeio
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  {" "}
+                  <CountUp start={0} end={95}></CountUp>%
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  90 % of customers are satisfied
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  Award Winner
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  G2’s 2025 Best Software Awards
+                </p>
+              </div>
+            </div>
           </div>
-        </Marquee>
+
+          {/* Right Side */}
+          <div className="flex-1">
+            <div className="bg-white shadow-md rounded-2xl p-8 max-w-md mx-auto">
+              <h4 className="text-green-600 font-semibold mb-3">Great Work</h4>
+              <p className="text-gray-700 mb-6">
+                Discover a global network of experts ready to bring your ideas
+                to life. From startups to enterprises, we make it simple to
+                hire, manage, and pay freelancers — all in one secure platform.
+              </p>
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://i.pravatar.cc/50?img=5"
+                  alt="user"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-medium text-gray-900">Courtney Henry</p>
+                  <p className="text-sm text-gray-500">Web Designer</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Slider Arrows */}
+            <div className="flex justify-center items-center gap-6 mt-6">
+              <button className="p-2 rounded-full border hover:bg-gray-100 transition">
+                <HiOutlineArrowLeft className="text-xl text-gray-700" />
+              </button>
+              <div className="flex gap-2">
+                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                <span className="w-2 h-2 rounded-full bg-gray-900"></span>
+                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+              </div>
+              <button className="p-2 rounded-full border hover:bg-gray-100 transition">
+                <HiOutlineArrowRight className="text-xl text-gray-700" />
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
+      
 
       <section className="w-11/12 mx-auto mb-35   ">
-        <h1 className="text-3xl font-semibold  ">Top Rated Performer</h1>
-         <p className="text-lg mt-1 mb-15">
-       Meet the professionals behind every successful project
-          </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12    mx-auto w-full">
+        <h1 className="text-3xl font-semibold text-center ">
+          Top Rated Performer
+        </h1>
+        <p className="text-lg mt-1 mb-15 text-center">
+          Meet the professionals behind every successful project
+        </p>
+        <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-12    mx-auto w-full">
           <div
             data-aos="zoom-in"
-            className=" mx-auto w-[320px] md:justify-items-normal bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+            className=" mx-auto w-[360px] md:justify-items-normal bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
           >
             {/* Profile Image */}
             <div className="relative">
@@ -497,86 +547,8 @@ const Home = () => {
           </div>
 
           <div
-            data-aos="zoom-in-right"
-            className="mx-auto w-[320px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic2}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Fiver</h3>
-            <p className="text-sm text-gray-500">Korim Bangima</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">3.9</span>
-              <span className="text-gray-400">(295 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Figma
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                SQL
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Node.js
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$50 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%58</p>
-              </div>
-            </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
-
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
             data-aos="zoom-in-left"
-            className="mx-auto w-[320px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
           >
             {/* Profile Image */}
             <div className="relative">
@@ -656,7 +628,7 @@ const Home = () => {
 
           <div
             data-aos="zoom-in-up"
-            className="mx-auto w-[320px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
           >
             {/* Profile Image */}
             <div className="relative">
@@ -733,7 +705,7 @@ const Home = () => {
 
           <div
             data-aos="fade-up"
-            className=" mx-auto w-[320px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+            className=" mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
           >
             {/* Profile Image */}
             <div className="relative">
@@ -810,7 +782,470 @@ const Home = () => {
               </svg>
             </button>
           </div>
+
+          <div
+            data-aos="fade-down-right"
+            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+          >
+            {/* Profile Image */}
+            <div className="relative">
+              <img
+                src={pic1}
+                alt="Robert Fox"
+                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
+              />
+              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+            </div>
+
+            {/* Name & Role */}
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">Fiver</h3>
+            <p className="text-sm text-gray-500">Korim Bangima</p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
+              <span className="text-yellow-400 text-base">★</span>
+              <span className="font-medium">3.9</span>
+              <span className="text-gray-400">(295 reviews)</span>
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                Figma
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                SQL
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                Node.js
+              </span>
+            </div>
+
+            {/* Info Section */}
+            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Location</p>
+                <p className="font-semibold">London</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Rate</p>
+                <p className="font-semibold">$50 / hr</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Job Success</p>
+                <p className="font-semibold">%58</p>
+              </div>
+            </div>
+
+            {/* View Profile Button */}
+            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+
+              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
+                View Profile
+              </span>
+
+              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            data-aos="fade-up-right"
+            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+          >
+            {/* Profile Image */}
+            <div className="relative">
+              <img
+                src={pic2}
+                alt="Robert Fox"
+                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
+              />
+              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+            </div>
+
+            {/* Name & Role */}
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              Market Place
+            </h3>
+            <p className="text-sm text-gray-500">JOS Don</p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
+              <span className="text-yellow-400 text-base">★</span>
+              <span className="font-medium">4.9</span>
+              <span className="text-gray-400">(675 reviews)</span>
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                Figma
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                C++
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                MongoDb
+              </span>
+            </div>
+
+            {/* Info Section */}
+            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Location</p>
+                <p className="font-semibold">London</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Rate</p>
+                <p className="font-semibold">$320 / hr</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Job Success</p>
+                <p className="font-semibold">%78</p>
+              </div>
+            </div>
+
+            {/* View Profile Button */}
+            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-500 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+
+              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
+                View Profile
+              </span>
+
+              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            data-aos="zoom-in-right"
+            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+          >
+            {/* Profile Image */}
+            <div className="relative">
+              <img
+                src={pic4}
+                alt="Robert Fox"
+                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
+              />
+              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+            </div>
+
+            {/* Name & Role */}
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              Official
+            </h3>
+            <p className="text-sm text-gray-500">Merry Doms</p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
+              <span className="text-yellow-400 text-base">★</span>
+              <span className="font-medium">3.9</span>
+              <span className="text-gray-400">(1675 reviews)</span>
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                ALl
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                C++
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                HP
+              </span>
+            </div>
+
+            {/* Info Section */}
+            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Location</p>
+                <p className="font-semibold">London</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Rate</p>
+                <p className="font-semibold">$1320 / hr</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Job Success</p>
+                <p className="font-semibold">%88</p>
+              </div>
+            </div>
+
+            {/* View Profile Button */}
+            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-500 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+
+              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
+                View Profile
+              </span>
+
+              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            data-aos="zoom-in-right"
+            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
+          >
+            {/* Profile Image */}
+            <div className="relative">
+              <img
+                src={pic7}
+                alt="Robert Fox"
+                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
+              />
+              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+            </div>
+
+            {/* Name & Role */}
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              Market{" "}
+            </h3>
+            <p className="text-sm text-gray-500">Limu Islam</p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
+              <span className="text-yellow-400 text-base">★</span>
+              <span className="font-medium">5.9</span>
+              <span className="text-gray-400">(975 reviews)</span>
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                New
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                C++
+              </span>
+              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
+                PHP
+              </span>
+            </div>
+
+            {/* Info Section */}
+            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Location</p>
+                <p className="font-semibold">London</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Rate</p>
+                <p className="font-semibold">$170 / hr</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-xs">Job Success</p>
+                <p className="font-semibold">%48</p>
+              </div>
+            </div>
+
+            {/* View Profile Button */}
+            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-500 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+
+              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
+                View Profile
+              </span>
+
+              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+
+              <svg
+                viewBox="0 0 24 24"
+                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
+      </section>
+
+      
+
+      <section className=" w-12/12 mx-auto bg-gray-50 mb-35">
+        <div className="w-11/12 mx-auto py-16 " ref={ref}>
+          {/* Header Part */}
+          <div className="text-center mb-12 px-4">
+            <span className="px-4 py-1 text-sm rounded-full  text-gray-700 font-semibold">
+              Success Business Award
+            </span>
+            <h2 className="text-2xl md:text-3xl font-semibold  text-gray-800 mt-4">
+              Our Success & Award
+            </h2>
+            <p className="max-w-2xl mx-auto mt-3 text-gray-500">
+              We take pride in our journey of connecting skilled freelancers
+              with global clients. Through dedication, trust, and innovation,
+              we’ve built a thriving marketplace where talent meets opportunity.
+            </p>
+          </div>
+
+          {/* CountUp Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-6  mx-auto">
+            {/* Card 1 */}
+            <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all hover:bg-base-200  group">
+              <div className="flex justify-center mb-4 animate-pulse ">
+                <Briefcase
+                  size={40}
+                  className="text-gray-600 group-hover:animate-bounce"
+                />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800">
+                {inView && (
+                  <CountUp start={0} end={12376} duration={2.5} separator="," />
+                )}
+              </h3>
+              <p className="text-gray-500 mt-2">Live Jobs</p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all group">
+              <div className="flex justify-center mb-4 animate-pulse">
+                <Users
+                  size={40}
+                  className="text-gray-600 group-hover:animate-bounce"
+                />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800">
+                {inView && (
+                  <CountUp start={0} end={89562} duration={2.5} separator="," />
+                )}
+              </h3>
+              <p className="text-gray-500 mt-2">Jobs Candidate</p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all group">
+              <div className="flex justify-center mb-4 animate-pulse">
+                <FileText
+                  size={40}
+                  className="text-gray-600 group-hover:animate-bounce"
+                />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800">
+                {inView && (
+                  <CountUp start={0} end={28166} duration={2.5} separator="," />
+                )}
+              </h3>
+              <p className="text-gray-500 mt-2">Active Resume</p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all group">
+              <div className="flex justify-center mb-4 animate-pulse">
+                <Building2
+                  size={40}
+                  className="text-gray-600 group-hover:animate-bounce"
+                />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800">
+                {inView && (
+                  <CountUp start={0} end={8966} duration={2.5} separator="," />
+                )}
+              </h3>
+              <p className="text-gray-500 mt-2">Companies</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="w-11/12 mx-auto mb-35">
+        <h1 className="text-3xl font-semibold text-center ">
+          Trusted by the world’s best Company
+        </h1>
+        <p className="text-lg mt-2 mb-15 text-center">
+          Building lasting partnerships through quality, trust, and innovation
+        </p>
+
+        <Marquee className="">
+          <div className="flex items-center gap-x-25 mt-15">
+            <img src={company} alt="Company 1" className="h-8 object-contain" />
+            <img
+              src={company2}
+              alt="Company 2"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company3}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company4}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company5}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company6}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img src={company} alt="Company 1" className="h-8 object-contain" />
+            <img
+              src={company2}
+              alt="Company 2"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company3}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+            <img
+              src={company4}
+              alt="Company 3"
+              className="h-8 object-contain"
+            />
+          </div>
+        </Marquee>
       </section>
     </div>
   );
