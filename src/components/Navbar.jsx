@@ -77,8 +77,10 @@ const Navbar = () => {
               </div>
             )}
           </div> */}
-          <button className="btn btn-outline ">Login</button>
+            <button className="btn btn-outline ">Login</button>
+          <Link to="/register">
           <button className="btn btn-secondary ">Register</button>
+          </Link>
 
             <div className="block  md:hidden relative ">
               {/* menu toggle btn */}
