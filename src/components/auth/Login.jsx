@@ -144,7 +144,7 @@ const Login = () => {
           If you don’t have an account yet ?
           <Link
             to="/register"
-            className=" hover:text-orange-500 hover:underline"
+            className=" text-orange-500 underline"
           >
             sign up now
           </Link>{" "}

@@ -14,7 +14,7 @@ const Footer = () => {
           {/* About */}
           <div>
             <h3 className="text-xl font-semibold mb-4 text-white">About Us</h3>
-            <p className="text-gray-400 leading-relaxed text-sm">
+            <p className="text-gray-400 leading-relaxed text-sm hover:text-orange-500">
               Discover a world where talent meets opportunity. Our freelance
               marketplace connects skilled professionals with clients seeking
               quality work and creative solutions. Empowering freelancers to
@@ -29,27 +29,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-pink-500 transition">
+                <a href="#" className="hover:text-orange-500 transition">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-pink-500 transition">
+                <a href="#" className="hover:text-orange-500 transition">
                   Services
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-pink-500 transition">
+                <a href="#" className="hover:text-orange-500 transition">
                   About
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-pink-500 transition">
+                <a href="#" className="hover:text-orange-500 transition">
                   Contact
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-pink-500 transition">
+                <a href="#" className="hover:text-orange-500 transition">
                   Blog
                 </a>
               </li>
@@ -60,9 +60,13 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4 text-white">Contact</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>Email: support@example.com</li>
-              <li>Phone: +1 234 567 890</li>
-              <li>Address: 1234 Street, City, Country</li>
+              <li className=" hover:text-orange-500">
+                Email: support@example.com
+              </li>
+              <li className=" hover:text-orange-500">Phone: +1 234 567 890</li>
+              <li className=" hover:text-orange-500">
+                Address: 1234 Street, City, Country
+              </li>
             </ul>
           </div>
           <div>
@@ -72,27 +76,27 @@ const Footer = () => {
               </h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-pink-500 transition">
+                  <a href="#" className="hover:text-orange-500 transition">
                     Branding
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-pink-500 transition">
+                  <a href="#" className="hover:text-orange-500 transition">
                     Design
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-pink-500 transition">
+                  <a href="#" className="hover:text-orange-500 transition">
                     Marketing
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-pink-500 transition">
+                  <a href="#" className="hover:text-orange-500 transition">
                     Advertisement
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-pink-500 transition">
+                  <a href="#" className="hover:text-orange-500 transition">
                     Blog
                   </a>
                 </li>
@@ -105,40 +109,69 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-pink-500 transition"
+                className="p-2 rounded-full bg-gray-800 hover:bg-orange-500 transition"
                 aria-label="Facebook"
               >
                 <FaFacebookF />
               </a>
               <a
                 href="#"
-                className="p-1.5 rounded-full bg-gray-800 hover:bg-pink-500 transition"
+                className="p-1.5 rounded-full bg-gray-800 hover:bg-orange-500 transition"
                 aria-label="Twitter"
               >
                 <img className="w-5 h-5 rounded-full" src={x}></img>
               </a>
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-pink-500 transition"
+                className="p-2 rounded-full bg-gray-800 hover:bg-orange-500 transition"
                 aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-pink-500 transition"
+                className="p-2 rounded-full bg-gray-800 hover:bg-orange-500 transition"
                 aria-label="LinkedIn"
               >
                 <FaLinkedinIn />
               </a>
             </div>
-            <div className="join mt-4">
+            <div className="join mt-6 w-full max-w-md mx-auto">
+              {/* Input */}
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input input-bordered bg-gray-500 join-item"
+                className="input join-item w-full 
+               input-bordered 
+               bg-white 
+               text-gray-800 
+               placeholder-gray-500 
+               focus:outline-none 
+               focus:ring-2 focus:ring-orange-500 
+               focus:border-orange-500
+               rounded-l-xl 
+               border-r-0"
               />
-              <button className="btn btn-primary join-item">Search Now</button>
+
+              {/* Button */}
+              <button
+                className="
+    btn join-item 
+    px-3 
+    bg-gradient-to-r from-orange-500 to-orange-600 
+    text-white font-semibold 
+    border-none 
+    rounded-r-xl 
+    shadow-lg 
+    hover:from-orange-600 hover:to-orange-700 
+    hover:shadow-xl 
+    hover:scale-105 
+    active:scale-95 
+    transition-all duration-300 ease-out
+  "
+              >
+                Search Now
+              </button>
             </div>
           </div>
         </div>
