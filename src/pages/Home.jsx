@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import {
   HiOutlineArrowLeft,
@@ -38,6 +38,7 @@ import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import { Briefcase, Users, FileText, Building2 } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import LatesCard from "../components/Cart/LatesCard";
 
 const Home = () => {
   const { ref, inView } = useInView({
@@ -47,7 +48,7 @@ const Home = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // animation duration in ms
+      duration: 2000, // animation duration in ms
       once: true, // whether animation should happen only once - while scrolling down
     });
   }, []);
@@ -134,6 +135,9 @@ const Home = () => {
         <h1 className="text-2xl md:text-3xl text-gray-900 text-center font-semibold">
           Letas 6 Job Detlise
         </h1>
+        <div >
+          <LatesCard></LatesCard>
+        </div>
       </section>
 
       <section className="mb-35 w-11/12   lg:w-8/12 mx-auto">

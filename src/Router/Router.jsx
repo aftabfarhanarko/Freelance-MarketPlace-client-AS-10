@@ -9,6 +9,7 @@ import Alljobs from "../pages/Alljobs";
 import MyAddedJobs from "../pages/MyAddedJobs";
 import MyAcceptedTasks from "../pages/MyAcceptedTasks";
 import AddJod from "../pages/AddJod";
+import JobDetails from "../pages/JobDetails";
 
 
 
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
        path:"/accecptjob",
        element: <PrivetRouter><MyAcceptedTasks></MyAcceptedTasks></PrivetRouter>
+      },
+      {
+       path:"/detlise/:id",
+       element: <PrivetRouter><JobDetails></JobDetails></PrivetRouter>
       },
       {
         path:"*",

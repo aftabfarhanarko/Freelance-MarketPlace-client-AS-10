@@ -1,11 +1,23 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import { Link } from "react-router";
 
 const Card1 = ({ job }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000, // animation duration in ms
+      once: true, // whether animation should happen only once - while scrolling down
+    });
+  }, []);
   const { title, postedBy, category, summary, coverImage, userEmail, _id } =
     job;
 
   return (
-    <div className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+    <div
+      data-aos="fade-up"
+      className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100"
+    >
       {/* Cover Image */}
       <div className="h-48 overflow-hidden">
         <img
@@ -46,7 +58,7 @@ const Card1 = ({ job }) => {
           </span>
 
           <Link
-            to={`/job/${_id}`}
+            to={`/detlise/${_id}`}
             className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-red-600 text-white font-medium text-sm rounded-lg hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 shadow-lg"
           >
             View Details

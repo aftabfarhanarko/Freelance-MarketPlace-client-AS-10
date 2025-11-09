@@ -3,6 +3,7 @@ import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import usePrivetApi from "../Hooks/PriverAPI";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const AddJod = () => {
   const { user } = useAuth();
@@ -34,6 +35,7 @@ const AddJod = () => {
     .then(result => {
         console.log("This is Data", result.data);
       pageNaviget("/")
+      toast.success("Your Job Add Successfully")
     })
   };
 
