@@ -157,7 +157,7 @@ const Navbar = () => {
                    : "translate-x-full opacity-0"
                }
             `}
-                style={{ width: "60%" }} // 40% width mobile screen
+                style={{ width: "50%" }} 
               >
                 <div className="p-6">
                   <h2 className="text-xl font-semibold ">
@@ -177,21 +177,28 @@ const Navbar = () => {
                   </div>
 
                   <ul className="menu  text-lg space-y-3">
-                    <NavLink to="/" onClick={() => setOpen(false)}>
+                    {/* <NavLink to="/" >
                       Home
-                    </NavLink>
-                    <NavLink to="/allproduct" onClick={() => setOpen(false)}>
-                      All Products
-                    </NavLink>
-                    <NavLink to="/myproducat" onClick={() => setOpen(false)}>
-                      My Products
-                    </NavLink>
-                    <NavLink to="/mybids" onClick={() => setOpen(false)}>
-                      My Bids
-                    </NavLink>
-                    <NavLink to="/creatProducat" onClick={() => setOpen(false)}>
-                      Create Product
-                    </NavLink>
+                    </NavLink> */}
+                    <li>
+                      <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/alljob" onClick={() => setOpen(false)}>All Jobs</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/creatJob" onClick={() => setOpen(false)}>Add a Job</NavLink>
+                    </li>
+                    {user && (
+                      <li>
+                        <NavLink to="/accecptjob" onClick={() => setOpen(false)}>My Accepted Tasks</NavLink>
+                      </li>
+                    )}
+                    {user && (
+                      <li>
+                        <NavLink to="/myAddjobs" onClick={() => setOpen(false)}>My Add Job</NavLink>
+                      </li>
+                    )}
                     {user ? (
                       <button
                         onClick={handelLogOut}

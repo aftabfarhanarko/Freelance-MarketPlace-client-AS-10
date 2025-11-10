@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import usePrivetApi from "../Hooks/PriverAPI";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
@@ -70,8 +69,13 @@ const UpdateJob = () => {
         className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
       >
         {/* Orange Header */}
-        <div className="bg-gradient-to-r from-orange-500 to-red-600 p-8 text-white">
-          <h2 className="text-2xl font-bold">Edit Job Post</h2>
+        <div className="bg-gradient-to-r from-orange-500 to-orange-300 text-white font-semibold text-lg rounded-xl hover:from-orange-400 hover:to-orange-500  p-8">
+          <h2 className="text-2xl font-semibold flex gap-2">Edit Job Post{ " "}
+           <span className="animate-bounce delay-100">.</span>
+            <span className="animate-bounce delay-200">.</span>
+            <span className="animate-bounce delay-300">.</span>
+
+          </h2>
           <p className="mt-2 opacity-90">
             Fill in the details below to attract the best talent
           </p>
@@ -176,7 +180,8 @@ const UpdateJob = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-10 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold text-lg rounded-xl hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 shadow-xl"
+              className="px-10 py-2 
+             bg-gradient-to-r from-orange-400 to-orange-500  hover:from-orange-500 hover:to-orange-400  text-white  font-medium text-lg rounded-xl  transition-all transform hover:scale-105 shadow-xl"
             >
               Ubdeat Now
             </button>

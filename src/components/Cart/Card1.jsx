@@ -7,7 +7,7 @@ const Card1 = ({ job }) => {
   useEffect(() => {
     AOS.init({
       duration: 2000,
-      once: true, 
+      once: true,
     });
   }, []);
   const { title, postedBy, category, summary, coverImage, userEmail, _id } =
@@ -41,7 +41,7 @@ const Card1 = ({ job }) => {
         </h3>
 
         <div className="flex items-center mt-3 text-sm text-gray-600">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold shadow-md">
+          <div className="w-10 h-10 rounded-full  flex items-center justify-center text-orange-600 font-bold bg-orange-200">
             {postedBy.charAt(0)}
           </div>
           <span className="ml-3 font-medium">{postedBy}</span>

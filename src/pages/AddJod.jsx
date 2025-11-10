@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import usePrivetApi from "../Hooks/PriverAPI";
@@ -9,6 +9,7 @@ const AddJod = () => {
   const { user } = useAuth();
   const priverApi = usePrivetApi();
   const pageNaviget = useNavigate();
+  const [loding, setLoding] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,18 +32,25 @@ const AddJod = () => {
     };
     // console.log({title, postedBy,category,summary, coverImage, userEmail, create_at});
 
+    setLoding(false)
     priverApi.post("jobs", postDataNow).then((result) => {
       console.log("This is Data", result.data);
       pageNaviget("/");
       toast.success("Your Job Add Successfully");
     });
+    setLoding(true)
   };
+
+  if(!loding){
+    return <LodingSpinner></LodingSpinner>
+  }
 
   return (
     <div className="bg-gradient-to-br from-orange-50 via-white to-red-50">
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900">Post a New Job</h1>
+           
           <p className="mt-3 text-lg text-gray-600">
             Reach thousands of skilled freelancers instantly
           </p>
@@ -58,7 +66,12 @@ const AddJod = () => {
           
           
           p-8 ">
-            <h2 className="text-2xl font-bold">Job Details</h2>
+            <h2 className="text-2xl font-semibold flex gap-2">Creat a Job and Post{ " "}
+           <span className="animate-bounce delay-100">.</span>
+            <span className="animate-bounce delay-200">.</span>
+            <span className="animate-bounce delay-300">.</span>
+
+          </h2>
             <p className="mt-2 opacity-90">
               Fill in the details below to attract the best talent
             </p>
