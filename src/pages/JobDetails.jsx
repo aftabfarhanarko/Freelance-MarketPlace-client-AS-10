@@ -134,29 +134,7 @@ const JobDetails = () => {
                     <p className="text-gray-600">{job.userEmail}</p>
                   </div>
                 </div>
-                <div className="mt-4 flex gap-4">
-                  <Link
-                    to={`/edit/${job._id}`}
-                    className="
-                 px-6 py-1.5 
-  text-orange-500 font-medium 
-  bg-white 
-  border-2 border-orange-500 
-  rounded-md 
-  transition-all duration-300 ease-out 
-  hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-500 
-  hover:text-white 
-  hover:shadow-xl 
-  hover:scale-105 
-  active:scale-95 
-  focus:outline-none focus:ring-4 focus:ring-orange-300
-                  flex items-center justify-center gap-2
-                  
-                  "
-                  >
-                    <FiEdit /> Edit Now
-                  </Link>
-                </div>
+               
               </div>
             </div>
 
@@ -192,7 +170,7 @@ const JobDetails = () => {
                 ) : (
                   <button
                     onClick={handleAcceptJob}
-                    className="w-full py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold text-lg rounded-xl hover:from-orange-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
+                    className="w-full py-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold text-lg rounded-xl hover:from-orange-500 hover:to-orange-400 transform hover:scale-105 transition-all duration-300 shadow-xl"
                   >
                     Accept This Job
                   </button>

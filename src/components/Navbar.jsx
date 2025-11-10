@@ -61,7 +61,7 @@ const Navbar = () => {
               )}
               {user && (
                 <li>
-                  <NavLink to="/">My Add Job</NavLink>
+                  <NavLink to="/myAddjobs">My Add Job</NavLink>
                 </li>
               )}
             </ul>
@@ -107,7 +107,7 @@ const Navbar = () => {
   outline
   rounded-md 
   transition-all duration-300 ease-out 
-  hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-500 
+  bg-gradient-to-r  hover:from-orange-500 hover:to-orange-400 
   hover:text-white 
   hover:shadow-xl 
   hover:scale-105 
@@ -125,8 +125,9 @@ const Navbar = () => {
                     <button
                       className="
                    px-6 py-2 
-  text-white font-medium bg-gradient-to-r from-orange-500 to-orange-600  rounded-md  
-  transform transition-all  duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
+  text-white font-medium  rounded-md
+  bg-gradient-to-r from-orange-400 to-orange-500  hover:from-orange-500 hover:to-orange-400 
+  transform transition-all  duration-300 ease-out  hover:shadow-xl 
   hover:scale-105 active:scale-95 
   focus:outline-none focus:ring-4 focus:ring-orange-300
                   "

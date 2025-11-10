@@ -2,7 +2,7 @@ import React from "react";
 
 const LodingSpinner = () => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-xs">
       <div className="flex flex-col items-center space-y-6">
         {/* Spinner */}
         <div className="relative">

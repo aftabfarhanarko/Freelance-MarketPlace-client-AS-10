@@ -53,7 +53,11 @@ const AddJod = () => {
           className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
         >
           {/* Orange Header */}
-          <div className="bg-gradient-to-r from-orange-500 to-red-600 p-8 text-white">
+          <div className="
+      bg-gradient-to-r from-orange-500 to-orange-300 text-white font-semibold text-lg rounded-xl hover:from-orange-400 hover:to-orange-500 
+          
+          
+          p-8 ">
             <h2 className="text-2xl font-bold">Job Details</h2>
             <p className="mt-2 opacity-90">
               Fill in the details below to attract the best talent
@@ -160,7 +164,10 @@ const AddJod = () => {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="px-10 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold text-lg rounded-xl hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 shadow-xl"
+                className="px-10 py-2
+                bg-gradient-to-r from-orange-400 to-orange-500  hover:from-orange-500 hover:to-orange-400  text-white font-semibold text-lg rounded-xl
+                 
+                 transition-all transform hover:scale-105 shadow-xl"
               >
                 Post Job Now
               </button>
