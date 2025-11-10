@@ -34,7 +34,7 @@ import pic4 from "../assets/women7.jpg";
 import pic7 from "../assets/postes.png";
 import pic5 from "../assets/women2.png";
 import pic6 from "../assets/women4.png";
-import my from "../assets/my.jpg";
+import my from "../assets/gemine.png";
 import CountUp from "react-countup";
 
 import ScrollTrigger from "react-scroll-trigger";
@@ -1418,7 +1418,7 @@ const Home = () => {
                 <motion.img
                   src={my}
                   alt="Freelancers working together"
-                  className="rounded-2xl shadow-2xl w-full object-cover"
+                  className="rounded-2xl shadow-2xl w-full object-cover border border-base-300"
                   animate={{ y: [0, -15, 0] }}
                   transition={{
                     repeat: Infinity,
