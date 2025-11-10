@@ -6,9 +6,14 @@
 
 @import "tailwindcss";
 @plugin "daisyui"{
-    themes: light --default;
-
 };
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 
 a.active{
   @apply text-orange-500

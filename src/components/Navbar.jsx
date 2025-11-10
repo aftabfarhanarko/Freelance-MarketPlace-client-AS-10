@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router";
 import logo from "/logo5.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { TbMenu2 } from "react-icons/tb";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -10,6 +10,18 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logOutUser } = useAuth();
   console.log(user);
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
 
   const handelLogOut = () => {
     logOutUser();
@@ -58,6 +70,12 @@ const Navbar = () => {
             <div className=" hidden md:block  ">
               {user ? (
                 <div className="flex items-center gap-3">
+                  <input
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem("theme") === "dark"}
+                    className="toggle"
+                  />
                   <div className="hidden  md:block ">
                     <div className="">
                       <img
@@ -207,4 +225,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

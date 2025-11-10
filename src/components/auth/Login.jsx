@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const [show, setShow] = useState(true);
   const { emailpasswordLoginUser, googleLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const pageNaviget = useNavigate()
+  console.log("Login Pages", location);
+  
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -19,6 +23,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         toast.success("Login Successfully");
+        pageNaviget(location.state ? location.state : "/")
       })
       .catch((err) => {
         console.log(err.code);
@@ -31,6 +36,7 @@ const Login = () => {
       .then((result) => {
         toast.success("Login Successfully");
         console.log(result.user);
+         pageNaviget(location.state ? location.state : "/")
       })
       .catch((err) => {
         toast.error(err.code);

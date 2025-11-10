@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import {  Link, useNavigate, useParams } from "react-router";
 import { useAxiosData } from "../Hooks/DataFetch";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
 import { MdMarkEmailRead } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
+import { useAuth } from "../Hooks/UseAuth";
 
 const JobDetails = () => {
+  const {user} = useAuth();
   const [loding, setLoding] = useState(true);
   const [job, setJob] = useState([]);
   const { id } = useParams();
   const apise = useAxiosData();
   const [isAccepted, setIsAccepted] = useState(false);
+  const pageNaviget = useNavigate();
+  
+
+
 
   useEffect(() => {
     setLoding(false);
@@ -22,13 +28,34 @@ const JobDetails = () => {
     });
   }, [apise, id]);
 
+
+
+
   const handleAcceptJob = () => {
     setIsAccepted(true);
-    toast.success("Congratulations! You have accepted this job.");
+      const postDataNow = {
+      title : job.title,
+      postedBy:job.postedBy,
+      category:job.category,
+      acceptsUserEmail:user.email,
+      coverImage:job.coverImage,
+      summary:job.summary,
+      create_at:new Date()
+    };
+    
+    apise.post('task',postDataNow)
+    .then(result => {
+      console.log(result.data);
+      toast.success("Congratulations! You have accepted this job.");
+      pageNaviget('/accecptjob')
+    })
+    console.log(postDataNow);
+    
+
   };
 
-  const iosTime = job.create_at;
 
+  const iosTime = job.create_at;
   const time = new Date(iosTime).toLocaleTimeString("en-GB", {
     timeZone: "Asia/Dhaka",
     hour: "2-digit",
@@ -36,9 +63,6 @@ const JobDetails = () => {
     second: "2-digit",
     hour12: false,
   });
-
-  console.log(time); // 03:23:17
-
   if (!loding) {
     return <LodingSpinner></LodingSpinner>;
   }

@@ -5,6 +5,8 @@ import { Navigate, useLocation } from "react-router";
 const PrivetRouter = ({ children }) => {
   const { user } = useAuth();
   const location = useLocation();
+  console.log(location.pathname);
+  
 
   if (user) {
     return children;
