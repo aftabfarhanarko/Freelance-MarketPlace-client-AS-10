@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import usePrivetApi from "../Hooks/PriverAPI";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
+import toast from "react-hot-toast";
 
 const MyAcceptedTasks = () => {
   const [loding, setLoding] = useState(false);
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
+  const [doneJobs, setDoneJobs] = useState({});
+
   const apies = usePrivetApi();
 
   useEffect(() => {
@@ -28,133 +31,244 @@ const MyAcceptedTasks = () => {
     hour12: false,
   });
 
+  // delet Buttons
+  const handelDelete = (id) => {
+    apies.delete(`task/${id}`).then((result) => {
+      if (result.data.deletedCount) {
+        setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
+        toast.success("Successfully Delet Your Jobs");
+      }
+    });
+  };
+
+  const handleDoneToggle = (jobId) => {
+    toast.success("Job Accepted Done");
+    setDoneJobs((prev) => ({
+      ...prev,
+      [jobId]: !prev[jobId],
+    }));
+  };
+
   if (loding) {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
-    <div className=" w-11/12 mx-auto min-h-screen">
-      <div className="  overflow-hidden mt-25 rounded-lg border border-gray-200 bg-white shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Job Title
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Posted By
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Category
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Applicant
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Summary
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Applied On
-                </th>
-                <th className="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {jobs.length === 0 ? (
+    <div className="bg-gradient-to-br from-orange-50 via-white to-red-50">
+      <div className=" w-11/12 mx-auto min-h-screen pt-25 ">
+        <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+          {/* Desktop Table View */}
+          <div className="overflow-x-auto hidden md:block">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
                 <tr>
-                  <td
-                    colSpan="7"
-                    className="px-6 py-12 text-center text-gray-500"
-                  >
-                    No job applications found.
-                  </td>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Job Title
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Posted By
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Category
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Applicant
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Summary
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Applied On
+                  </th>
+                  <th className="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
-              ) : (
-                jobs.map((job, index) => (
-                  <tr
-                    key={index}
-                    className="hover:bg-gray-50 transition-colors"
-                  >
-                    {/* Cover Image + Title */}
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center space-x-3">
-                        {job?.coverImage ? (
-                          <img
-                            src={job?.coverImage}
-                            alt={job?.title}
-                            className="w-12 h-12 rounded-lg object-cover border border-gray-200"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 bg-gray-200 border-2 border-dashed rounded-lg" />
-                        )}
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">
-                            {job?.title}
+              </thead>
+
+              <tbody className="bg-white divide-y divide-gray-200">
+                {jobs.length === 0 ? (
+                  <tr>
+                    <td
+                      colSpan="7"
+                      className="px-6 py-12 text-center text-gray-500"
+                    >
+                      No job applications found.
+                    </td>
+                  </tr>
+                ) : (
+                  jobs.map((job, index) => {
+                    const isDone = doneJobs[job._id]; // নির্দিষ্ট job এর done অবস্থা
+                    return (
+                      <tr
+                        key={index}
+                        className="hover:bg-gray-50 transition-colors"
+                      >
+                        {/* Cover Image + Title */}
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center space-x-3">
+                            {job?.coverImage ? (
+                              <img
+                                src={job?.coverImage}
+                                alt={job?.title}
+                                className="w-12 h-12 rounded-lg object-cover border border-gray-300"
+                              />
+                            ) : (
+                              <div className="w-12 h-12 bg-gray-200 border-2 border-dashed rounded-lg" />
+                            )}
+                            <div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {job?.title}
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        </td>
+
+                        {/* Posted By */}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                          {job?.postedBy}
+                        </td>
+
+                        {/* Category */}
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-600">
+                            {job?.category}
+                          </span>
+                        </td>
+
+                        {/* Applicant */}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                          {job?.acceptsUserEmail}
+                        </td>
+
+                        {/* Summary */}
+                        <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
+                          <p className="line-clamp-2">{job?.summary}</p>
+                        </td>
+
+                        {/* Applied Date */}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                          {time}
+                        </td>
+
+                        {/* Actions */}
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                          <div className="flex items-center justify-center space-x-3">
+                            {!isDone ? (
+                              <div className="flex gap-3">
+                                <button
+                                  onClick={() => handleDoneToggle(job._id)}
+                                  className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition"
+                                >
+                                  <CheckCircleIcon className="w-4 h-4 mr-1" />
+                                  Done
+                                </button>
+                                <button
+                                  onClick={() => handelDelete(job._id)}
+                                  className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
+                                >
+                                  <XCircleIcon className="w-4 h-4 mr-1" />
+                                  Clear
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                disabled
+                                className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 opacity-70 cursor-not-allowed"
+                              >
+                                <CheckCircleIcon className="w-4 h-4 mr-1" />
+                                Done
+                              </button>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="block md:hidden p-4 space-y-5">
+            {jobs.length === 0 ? (
+              <p className="text-center text-gray-500">
+                No job applications found.
+              </p>
+            ) : (
+              jobs.map((job, index) => {
+                const isDone = doneJobs[job._id];
+                return (
+                  <div
+                    key={index}
+                    className="border border-gray-200 rounded-lg shadow-sm p-4 space-y-3"
+                  >
+                    <div className="flex items-center space-x-3">
+                      {job?.coverImage ? (
+                        <img
+                          src={job?.coverImage}
+                          alt={job?.title}
+                          className="w-14 h-14 rounded-lg object-cover border border-gray-300"
+                        />
+                      ) : (
+                        <div className="w-14 h-14 bg-gray-200 border-2 border-dashed rounded-lg" />
+                      )}
+                      <div>
+                        <h3 className="text-sm font-semibold text-gray-900">
+                          {job?.title}
+                        </h3>
+                        <p className="text-xs text-gray-500">{job?.postedBy}</p>
                       </div>
-                    </td>
+                    </div>
 
-                    {/* Posted By */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                      {job?.postedBy}
-                    </td>
-
-                    {/* Category */}
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-600">
+                    <div className="flex justify-between text-xs text-gray-600">
+                      <span className="inline-flex px-2 py-1 rounded-full bg-orange-100 text-orange-600">
                         {job?.category}
                       </span>
-                    </td>
+                      <span>{time}</span>
+                    </div>
 
-                    {/* Applicant Email */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                      {job?.acceptsUserEmail}
-                    </td>
+                    <p className="text-sm text-gray-700 line-clamp-2">
+                      {job?.summary}
+                    </p>
 
-                    {/* Summary */}
-                    <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
-                      <p className="line-clamp-2">{job?.summary}</p>
-                    </td>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-gray-500 truncate max-w-[60%]">
+                        {job?.acceptsUserEmail}
+                      </span>
 
-                    {/* Applied Date */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                      {time}
-                    </td>
-
-                    {/* Action Buttons */}
-                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                      <div className="flex items-center justify-center space-x-3">
-                        {/* Done Button */}
+                      {!isDone ? (
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleDoneToggle(job._id)}
+                            className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
+                          >
+                            <CheckCircleIcon className="w-4 h-4 mr-1" />
+                            Done
+                          </button>
+                          <button
+                            onClick={() => handelDelete(job._id)}
+                            className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition"
+                          >
+                            <XCircleIcon className="w-4 h-4 mr-1" />
+                            Clear
+                          </button>
+                        </div>
+                      ) : (
                         <button
-                          onClick={() =>
-                            console.log("Done:", job?.acceptsUserEmail)
-                          }
-                          className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition"
+                          disabled
+                          className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 opacity-70 cursor-not-allowed"
                         >
                           <CheckCircleIcon className="w-4 h-4 mr-1" />
                           Done
                         </button>
-
-                        {/* Clear Button */}
-                        <button
-                          onClick={() =>
-                            console.log("Clear:", job?.acceptsUserEmail)
-                          }
-                          className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
-                        >
-                          <XCircleIcon className="w-4 h-4 mr-1" />
-                          Clear
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                      )}
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
       </div>
     </div>
