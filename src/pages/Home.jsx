@@ -47,10 +47,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    AOS.init({
-      duration: 2000, // animation duration in ms
-      once: true, // whether animation should happen only once - while scrolling down
-    });
+    AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
   }, []);
   return (
     <div>
@@ -60,69 +57,110 @@ const Home = () => {
 
       <section className="w-11/12 mx-auto mt-35 mb-35">
         <div>
-          <h1 className="text-3xl font-semibold text-center ">
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-easing="ease-out-cubic"
+            className="text-3xl md:text-4xl font-semibold text-center opacity-0"
+          >
             Need something done?
           </h1>
-          <p className="text-lg text-center mt-2 mb-15">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="2500"
+            data-aos-easing="ease-out-cubic"
+            className="text-lg md:text-xl text-center mt-2 mb-12"
+          >
             Most viewed and all-time top-selling services
           </p>
-          <div className=" grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1 */}
             <div
               data-aos="fade-up"
-              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 
-                    transition-all duration-300 hover:bg-base-200 group"
+              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
             >
-              <div className="group-hover:animate-bounce">
-                {" "}
-                <HiOutlineUsers className="w-11 h-8 mx-auto font-bold animate-pulse  text-orange-500" />
+              <div
+                className="mx-auto w-11 h-11 text-orange-500 transition-transform duration-500
+                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
+              >
+                <HiOutlineUsers className="w-full h-full" />
               </div>
 
-              <h2 className="text-lg font-medium mt-3">Post a job</h2>
-              <p className="text-gray-800 text-md">
+              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+                Post a job
+              </h2>
+              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 Write your project details clearly and attract the right talent
                 instantly.
               </p>
             </div>
 
+            {/* Card 2 */}
             <div
               data-aos="fade-up"
-              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 
-                    transition-all duration-300 hover:bg-base-200 group"
+              data-aos-delay="100"
+              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
             >
-              <div className="group-hover:animate-bounce">
-                <FaRegHandshake className="w-11 h-8 mx-auto animate-pulse text-orange-500"></FaRegHandshake>
+              <div
+                className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
+                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
+              >
+                <FaRegHandshake className="w-full h-full" />
               </div>
-              <h2 className="text-lg font-medium">Choose freelancers</h2>
-              <p className="text-gray-800 text-md">
+
+              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+                Choose freelancers
+              </h2>
+              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 Browse verified profiles, compare experience, and select the
                 best fit for your work.
               </p>
             </div>
 
+            {/* Card 3 */}
             <div
               data-aos="fade-up"
-              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 
-                    transition-all duration-300 hover:bg-base-200 group"
+              data-aos-delay="200"
+              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
             >
-              <div className="group-hover:animate-bounce">
-                <HiOutlineCreditCard className="w-11 h-8 mx-auto animate-pulse text-orange-500"></HiOutlineCreditCard>
+              <div
+                className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
+                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
+              >
+                <HiOutlineCreditCard className="w-full h-full" />
               </div>
-              <h2 className="text-lg font-medium">Pay safely</h2>
-              <p className="text-gray-800 text-md">
+
+              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+                Pay safely
+              </h2>
+              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 All payments are protected with secure escrow, released only
                 when you're satisfied.
               </p>
             </div>
+
+            {/* Card 4 */}
             <div
               data-aos="fade-up"
-              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 
-                    transition-all duration-300 hover:bg-base-200 group"
+              data-aos-delay="300"
+              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
             >
-              <div className="group-hover:animate-bounce">
-                <HiOutlineSupport className="w-11 h-8 mx-auto animate-pulse text-orange-500"></HiOutlineSupport>
+              <div
+                className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
+                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
+              >
+                <HiOutlineSupport className="w-full h-full" />
               </div>
-              <h2 className="text-lg font-medium">We’re here to help</h2>
-              <p className="text-gray-800 text-md">
+
+              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+                We’re here to help
+              </h2>
+              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 Our support team is available anytime to guide you, answer
                 questions, and assist.
               </p>
@@ -132,12 +170,7 @@ const Home = () => {
       </section>
 
       <section className="w-11/12 mx-auto mb-35">
-        <h1 className="text-2xl md:text-3xl text-gray-900 text-center font-semibold">
-          Letas 6 Job Detlise
-        </h1>
-        <div>
-          <LatesCard></LatesCard>
-        </div>
+        <LatesCard></LatesCard>
       </section>
 
       <section className="mb-35 w-11/12 lg:w-8/12 mx-auto">
@@ -213,10 +246,24 @@ const Home = () => {
       </section>
 
       <section className="w-11/12 mx-auto mb-35">
-        <h1 className="text-3xl font-semibold text-left ">Our Blog</h1>
-        <p className="text-lg text-left mt-2 mb-15">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-easing="ease-out-cubic"
+          className="text-3xl md:text-4xl font-semibold text-center opacity-0"
+        >
+          Our Blog
+        </h1>
+
+        <p
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="ease-out-cubic"
+          className="text-lg md:text-xl text-center mt-2 mb-12"
+        >
           Aliquam lacinia diam quis lacus euismod
         </p>
+
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           <div
             data-aos="fade-up"
@@ -364,13 +411,20 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="w-full bg-[#f6faf7] py-20 px-5 mb-35">
+      <section className="w-full bg-orange-50 py-20 px-5 mb-35 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
-          {/* Left Side */}
-          <div className="flex-1 text-center md:text-left">
+          {/* Left Side Animation */}
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="flex-1 text-center md:text-left"
+          >
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
               Find the Perfect Freelancer for Your Next Big Project
             </h2>
+
             <p className="text-gray-500 mb-8">
               Freeio is a modern freelance marketplace that connects talented
               professionals with clients around the world. Whether you’re a
@@ -378,25 +432,32 @@ const Home = () => {
               business and showcase your skills.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-8"
+            >
               <div>
                 <h3 className="text-2xl font-semibold text-orange-500">
                   4.9/
-                  <CountUp start={0} end={5} />{" "}
+                  <CountUp start={0} end={5} duration={2} />{" "}
                 </h3>
                 <p className="text-gray-500 text-sm">
                   Clients rate professionals on Freeio
                 </p>
               </div>
+
               <div>
                 <h3 className="text-2xl font-semibold text-orange-500">
-                  {" "}
-                  <CountUp start={0} end={95}></CountUp>%
+                  <CountUp start={0} end={95} duration={2}></CountUp>%
                 </h3>
                 <p className="text-gray-500 text-sm">
-                  90 % of customers are satisfied
+                  90% of customers are satisfied
                 </p>
               </div>
+
               <div>
                 <h3 className="text-2xl font-semibold text-orange-500">
                   Award Winner
@@ -405,19 +466,36 @@ const Home = () => {
                   G2’s 2025 Best Software Awards
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Side */}
-          <div className="flex-1">
-            <div className="bg-white shadow-md rounded-2xl p-8 max-w-md mx-auto">
+          {/* Right Side Animation */}
+          <motion.div
+            initial={{ x: 100, opacity: 0, scale: 0.9 }}
+            whileInView={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="flex-1"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="bg-white shadow-xl rounded-2xl p-8 max-w-md mx-auto hover:shadow-2xl transition-all duration-500"
+            >
               <h4 className="text-orange-500 font-semibold mb-3">Great Work</h4>
               <p className="text-gray-700 mb-6">
                 Discover a global network of experts ready to bring your ideas
                 to life. From startups to enterprises, we make it simple to
                 hire, manage, and pay freelancers — all in one secure platform.
               </p>
-              <div className="flex items-center gap-3">
+
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="flex items-center gap-3"
+              >
                 <img
                   src="https://i.pravatar.cc/50?img=5"
                   alt="user"
@@ -427,11 +505,16 @@ const Home = () => {
                   <p className="font-medium text-gray-900">Courtney Henry</p>
                   <p className="text-sm text-gray-500">Web Designer</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* Slider Arrows */}
-            <div className="flex justify-center items-center gap-6 mt-6">
+            {/* Bottom Slider Arrows */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="flex justify-center items-center gap-6 mt-6"
+            >
               <button className="p-2 rounded-full border hover:bg-gray-100 transition">
                 <HiOutlineArrowLeft className="text-xl text-gray-700" />
               </button>
@@ -444,18 +527,29 @@ const Home = () => {
               <button className="p-2 rounded-full border hover:bg-gray-100 transition">
                 <HiOutlineArrowRight className="text-xl text-gray-700" />
               </button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       <section className="w-11/12 mx-auto mb-35   ">
-        <h1 className="text-3xl font-semibold text-center ">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="ease-out-cubic"
+          className="text-3xl md:text-4xl font-semibold text-center opacity-0"
+        >
           Top Rated Performer
         </h1>
-        <p className="text-lg mt-1 mb-15 text-center">
+        <p
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-easing="ease-out-cubic"
+          className="text-lg md:text-xl text-center mt-2 mb-12"
+        >
           Meet the professionals behind every successful project
         </p>
+
         <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-12    mx-auto w-full">
           <div
             data-aos="zoom-in"
@@ -1106,13 +1200,25 @@ const Home = () => {
         <div className="w-11/12 mx-auto py-16 " ref={ref}>
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
-            <span className="px-4 py-1 text-sm rounded-full  text-orange-500 font-semibold">
+            <h2
+             data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-easing="ease-out-cubic"
+            className="px-4 py-1 text-sm rounded-full  text-orange-500 font-semibold">
               Success Business Award
-            </span>
-            <h2 className="text-2xl md:text-3xl font-semibold  text-gray-800 mt-4">
+            </h2>
+            <h2 
+              data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="ease-out-cubic"
+            className="text-2xl md:text-3xl font-semibold  text-gray-800 mt-4">
               Our Success & Award
             </h2>
-            <p className="max-w-2xl mx-auto mt-3 text-gray-500">
+            <p 
+             data-aos="fade-up"
+          data-aos-duration="2500"
+          data-aos-easing="ease-out-cubic"
+            className="max-w-2xl mx-auto mt-3 text-gray-500">
               We take pride in our journey of connecting skilled freelancers
               with global clients. Through dedication, trust, and innovation,
               we’ve built a thriving marketplace where talent meets opportunity.
@@ -1194,10 +1300,20 @@ const Home = () => {
       </section>
 
       <section className="w-11/12 mx-auto mb-35">
-        <h1 className="text-3xl font-semibold text-center ">
+        <h1
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="ease-out-cubic"
+          className="text-3xl md:text-4xl font-semibold text-center opacity-0"
+        >
           Trusted by the world’s best Company
         </h1>
-        <p className="text-lg mt-2 mb-15 text-center">
+        <p
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-easing="ease-out-cubic"
+          className="text-lg md:text-xl text-center mt-2 mb-12"
+        >
           Building lasting partnerships through quality, trust, and innovation
         </p>
 
