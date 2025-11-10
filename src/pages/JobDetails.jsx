@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { useAxiosData } from "../Hooks/DataFetch";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
+import { MdMarkEmailRead } from "react-icons/md";
+
 
 const JobDetails = () => {
   const [loding, setLoding] = useState(true);
@@ -25,9 +27,24 @@ const JobDetails = () => {
     toast.success("Congratulations! You have accepted this job.");
   };
 
+const iosTime = job.create_at;  
+
+const time = new Date(iosTime).toLocaleTimeString("en-GB", {
+  timeZone: "Asia/Dhaka",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+});
+
+console.log(time); // 03:23:17
+
+
+
   if (!loding) {
     return <LodingSpinner></LodingSpinner>;
   }
+
   return (
     <div>
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-12 px-4">
@@ -76,8 +93,7 @@ const JobDetails = () => {
                   {job?.category}
                 </span>
                 <span className="text-gray-600">
-                  Posted on:{" "}
-                  {/* {format(new Date(job.create_at), "dd MMM yyyy, hh:mm a")} */}
+                  Posted on:  {time}
                 </span>
               </div>
 
@@ -98,7 +114,8 @@ const JobDetails = () => {
                 </h2>
                 <div className="flex items-center gap-5">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center text-white text-md font-medium shadow-lg">
-                    {/* <MdMarkEmailRead /> */}L
+                  <MdMarkEmailRead />
+
                   </div>
 
                   <div>
