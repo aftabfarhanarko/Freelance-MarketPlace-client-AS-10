@@ -34,7 +34,7 @@ const MyAcceptedTasks = () => {
     });
   }, [apies, user]);
 
-  // delet Buttons kaj bakei
+  // Pc Delet
   const handelClear = (_id) => {
     if (!user?.email) {
       <LodingSpinner></LodingSpinner>;
@@ -59,7 +59,21 @@ const MyAcceptedTasks = () => {
     hour12: false,
   });
 
-  // const hanndelCLear = () => {};
+  // Mobile 
+  const hanndelCLearMobile = (_id) => {
+    if (!user?.email) {
+      <LodingSpinner></LodingSpinner>;
+      return;
+    }
+    //  setLoding(true)
+    apies.delete(`task/${_id}?email=${user?.email}`).then((result) => {
+      if (result.data.deletedCount) {
+        setJobs((prevJobs) => prevJobs.filter((one) => one._id !== _id));
+        toast.success("Successfully Deleat Your Accesspts Jobs");
+        setLoding(false);
+      }
+    });
+  };
 
   if (loding) {
     return <LodingSpinner></LodingSpinner>;
@@ -172,15 +186,15 @@ const MyAcceptedTasks = () => {
                         {/* Actions */}
                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                           <div className="flex items-center justify-center space-x-3">
-                            <div className="flex gap-3">
+                            <div
+                              onClick={() => handelClear(job._id)}
+                              className="flex gap-3"
+                            >
                               <button className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition">
                                 <CheckCircleIcon className="w-4 h-4 mr-1" />
                                 Done
                               </button>
-                              <button
-                                onClick={() => handelClear(job._id)}
-                                className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
-                              >
+                              <button className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition">
                                 <XCircleIcon className="w-4 h-4 mr-1" />
                                 Clear
                               </button>
@@ -231,31 +245,32 @@ const MyAcceptedTasks = () => {
                       <span className="inline-flex px-2 py-1 rounded-full bg-orange-100 text-orange-600">
                         {job?.category}
                       </span>
-                      <span>{time}</span>
                     </div>
 
                     <p className="text-sm text-gray-700 line-clamp-2">
                       {job?.summary}
                     </p>
 
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-500 truncate max-w-[60%]">
-                        {job?.acceptsUserEmail}
-                      </span>
-                      <button
-                        onClick={""}
-                        className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
+                    <div className="flex  flex-col gap-3">
+                      <div className=" flex items-center justify-between">
+                        <p className="text-xs text-gray-500 truncate max-w-[60%]">
+                          {job?.acceptsUserEmail}
+                        </p>
+                        <p className="text-xs text-gray-900">{time}</p>
+                      </div>
+                      <div
+                        className="flex gap-5"
+                        onClick={() => hanndelCLearMobile(job._id)}
                       >
-                        <CheckCircleIcon className="w-4 h-4 mr-1" />
-                        Done
-                      </button>
-                      <button
-                        onClick={""}
-                        className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition"
-                      >
-                        <XCircleIcon className="w-4 h-4 mr-1" />
-                        Clear
-                      </button>
+                        <button className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition">
+                          <CheckCircleIcon className="w-4 h-4 mr-1" />
+                          Done
+                        </button>
+                        <button className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition">
+                          <XCircleIcon className="w-4 h-4 mr-1" />
+                          Clear
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

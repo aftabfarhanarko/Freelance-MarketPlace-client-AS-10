@@ -59,7 +59,7 @@ const MyAddedJobs = () => {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
-    <div className="min-h-screen bg-[url('/background3.png')] bg-cover bg-center">
+    <div className="min-h-[80vh] bg-[url('/background3.png')] bg-cover bg-center">
       <section className="max-w-7xl mx-auto p-5">
         <h2 
          data-aos="fade-up"
