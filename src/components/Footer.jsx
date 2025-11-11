@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/TTT.png";
 import {
   FaFacebookF,
   FaInstagram,
@@ -20,6 +21,7 @@ const Footer = () => {
               quality work and creative solutions. Empowering freelancers to
               grow, earn, and shine globally.
             </p>
+            <img className="w-30 md:w-35 rounded-lg mt-4 " src={logo}></img>
           </div>
 
           {/* Quick Links */}

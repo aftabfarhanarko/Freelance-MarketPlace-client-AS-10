@@ -84,7 +84,7 @@ const MyAcceptedTasks = () => {
         data-aos="fade-up"
         data-aos-duration="1500"
         data-aos-easing="ease-out-cubic"
-        className="text-center text-3xl  font-semibold pt-15"
+        className="text-center text-3xl dark:text-black  font-semibold pt-15"
       >
         This is Your Accepts Job Sections
       </h1>

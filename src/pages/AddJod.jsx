@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import usePrivetApi from "../Hooks/PriverAPI";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { BiLeftArrowAlt } from "react-icons/bi";
+
 
 const AddJod = () => {
   const { user } = useAuth();
@@ -54,6 +56,7 @@ const AddJod = () => {
     <div className="bg-[url('/background2.png')] bg-cover bg-center0">
       <div className="">
         <div className="max-w-4xl mx-auto px-4 py-12">
+        <Link to="/alljob" className=" font-semibold dark:text-black flex text-lg items-center gap-1 mb-10"><BiLeftArrowAlt className="w-7" /> Back All Job</Link>
           <div className="text-center mb-10">
             <h1
               data-aos="fade-up"
@@ -114,14 +117,14 @@ const AddJod = () => {
 
               {/* 2. Category */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-black mb-2">
                   Category <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="category"
                   required
                   placeholder="Please select a category"
-                  className=" w-full px-4 outline-none py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all "
+                  className=" w-full px-4 outline-none py-3 border  dark:border-black rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all "
                 >
                   <option value="">Choose a category</option>
                   <option>Web Development</option>

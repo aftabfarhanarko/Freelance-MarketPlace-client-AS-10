@@ -1,10 +1,10 @@
 import { Link, NavLink } from "react-router";
-import logo from "/logo5.png";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { TbMenu2 } from "react-icons/tb";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useAuth } from "../Hooks/UseAuth";
+import logo from "../assets/TTT.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -32,15 +32,10 @@ const Navbar = () => {
       <div className="navbar  w-11/12 mx-auto ">
         <div className="navbar-start">
           <img
-            className="w-16 rounded-4xl border mr-2 border-gray-500 "
+            className="w-30 md:w-35 rounded-lg  "
             src={logo}
           ></img>
-          <a
-            className=" font-semibold text-lg  text-orange-500
- md:text-xl "
-          >
-            Freelance <span className="">MarketPlace</span>
-          </a>
+         
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 flex gap-8 list-none text-lg font-medium">
@@ -51,16 +46,16 @@ const Navbar = () => {
               <NavLink to="/alljob">All Jobs</NavLink>
             </li>
             <li>
-              <NavLink to="/creatJob">Add a Job</NavLink>
+              <NavLink to="/creatJob">Add Job</NavLink>
             </li>
             {user && (
               <li>
-                <NavLink to="/accecptjob">My Accepted Tasks</NavLink>
+                <NavLink to="/accecptjob">Accepted Tasks</NavLink>
               </li>
             )}
             {user && (
               <li>
-                <NavLink to="/myAddjobs">My Add Job</NavLink>
+                <NavLink to="/myAddjobs">Post Job</NavLink>
               </li>
             )}
           </ul>

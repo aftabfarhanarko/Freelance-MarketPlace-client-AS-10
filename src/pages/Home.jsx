@@ -45,7 +45,7 @@ import LatesCard from "../components/Cart/LatesCard";
 const Home = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.1,
   });
 
   useEffect(() => {
@@ -179,7 +179,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="w-11/12 mx-auto mb-35">
+      <section className="md:w-11/12 mx-auto mb-35">
         <LatesCard></LatesCard>
       </section>
 
@@ -1336,7 +1336,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
-                  <CountUp start={0} end={12376} duration={2.5} separator="," />
+                  <CountUp start={0} end={12376}  separator="," />
                 )}
               </h3>
               <p className="text-gray-500 mt-2">Live Jobs</p>
@@ -1352,7 +1352,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
-                  <CountUp start={0} end={89562} duration={2.5} separator="," />
+                  <CountUp start={0} end={89562}  separator="," />
                 )}
               </h3>
               <p className="text-gray-500 mt-2">Jobs Candidate</p>
@@ -1368,7 +1368,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
-                  <CountUp start={0} end={28166} duration={2.5} separator="," />
+                  <CountUp start={0} end={28166}  separator="," />
                 )}
               </h3>
               <p className="text-gray-500 mt-2">Active Resume</p>
@@ -1384,7 +1384,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
-                  <CountUp start={0} end={8966} duration={2.5} separator="," />
+                  <CountUp start={0} end={8966}  separator="," />
                 )}
               </h3>
               <p className="text-gray-500 mt-2">Companies</p>
@@ -1544,43 +1544,43 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <img
               src={company2}
               alt="Company 2"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img
               src={company3}
               alt="Company 3"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img
               src={company4}
               alt="Company 3"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img
               src={company5}
               alt="Company 3"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img
               src={company6}
               alt="Company 3"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img src={company} alt="Company 1" className="h-8 object-contain" />
             <img
               src={company2}
               alt="Company 2"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img
               src={company3}
               alt="Company 3"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
             <img
               src={company4}
               alt="Company 3"
-              className="h-8 object-contain"
+              className="h-8 dark:text-white object-contain"
             />
           </div>
         </Marquee>
