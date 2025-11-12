@@ -19,7 +19,7 @@ const Alljobs = () => {
   const [alljob, setAlljob] = useState([]);
   const [loding, setLoding] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [value , setValue] = useState("");
+  const [value, setValue] = useState("");
   const apiData = useAxiosData();
   const scrollRef = useRef(null);
 
@@ -50,10 +50,20 @@ const Alljobs = () => {
   };
 
   const haldelSort = () => {
-
-  }
-  console.log(value);
-  
+    if (value === "Sort ascending") {
+      apiData.get("sorting").then((result) => {
+        // console.log("Sorting data", result.data);
+        setAlljob(result.data);
+      });
+      console.log("Data");
+    } else if (value === "Sort descending") {
+      apiData.get("sorting2").then((result) => {
+        // console.log("Sorting data", result.data);
+        setAlljob(result.data);
+      });
+      console.log(value);
+    }
+  };
 
   if (loding) {
     return <LodingSpinner></LodingSpinner>;
@@ -119,16 +129,16 @@ const Alljobs = () => {
               </div>
               <h1 className="text-md font-medium -mt-3">Sorting Now</h1>
               <div onClick={haldelSort}>
-              <select
-              onChange={(e)=> setValue(e.target.value)}
-                defaultValue="Sort Now Any Type"
-                className="dark:bg-white select w-full max-w-xs focus:outline-none rounded-xl  backdrop-blur shadow-lg border border-gray-200 
+                <select
+                  onChange={(e) => setValue(e.target.value)}
+                  defaultValue="Sort Now Any Type"
+                  className="dark:bg-white select w-full max-w-xs focus:outline-none rounded-xl  backdrop-blur shadow-lg border border-gray-200 
                focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-black/86"
-              >
-                <option disabled> Sort</option>
-                <option className=" ">	Sort ascending</option>
-                <option>	Sort descending</option>
-              </select>              
+                >
+                  <option disabled> Sort</option>
+                  <option className=" "> Sort ascending</option>
+                  <option> Sort descending</option>
+                </select>
               </div>
             </div>
           </div>
