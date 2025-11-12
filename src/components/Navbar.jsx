@@ -72,7 +72,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex="-1"
-                  className="dropdown-content z-5 menu bg-base-100 rounded-box  w-42 p-4 shadow-sm"
+                  className="dropdown-content z-5 menu bg-base-100 rounded-box mt-5  w-42 p-4 shadow-sm"
                 >
                   {user && (
                     <div className="flex items-center flex-col gap-3">
@@ -147,7 +147,7 @@ const Navbar = () => {
             {/* menu toggle btn */}
             <button
               onClick={() => setOpen(!open)}
-              className="btn-ghost text-[32px] font-bold fixed top-7 right-5 z-50 text-black hover:text-green-700 transition-colors"
+              className="btn-ghost text-[32px] font-bold  top-7 right-5  text-black hover:text-green-700 transition-colors"
             >
               {open ? <IoClose /> : <TbMenu2 />}
             </button>
@@ -163,6 +163,12 @@ const Navbar = () => {
             `}
               style={{ width: "50%" }}
             >
+                <button
+              onClick={() => setOpen(!open)}
+              className="btn-ghost  text-[32px] font-bold  top-7 right-5 z-50 text-black hover:text-green-700 transition-colors"
+            >
+              {open ? <IoClose /> : <TbMenu2 />}
+            </button>
               <div className="p-6">
                 <div className="mt-5 ml-2">
                   {user ? (

@@ -1520,7 +1520,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="w-11/12 mx-auto mb-35">
+      <section className="w-11/12 mx-auto ">
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"

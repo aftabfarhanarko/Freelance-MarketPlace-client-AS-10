@@ -7,7 +7,14 @@ import {
   FaTwitter,
 } from "react-icons/fa6";
 import x from "../assets/x.png";
+import toast from "react-hot-toast";
 const Footer = () => {
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Successfully Subscribe Now");
+    e.target.reset();
+  }
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
       <div className="w-11/12 mx-auto px-6 md:px-12">
@@ -138,7 +145,7 @@ const Footer = () => {
                 <FaLinkedinIn />
               </a>
             </div>
-            <div className="join mt-6 w-full max-w-md mx-auto">
+            <form onSubmit={handelSubmit} className="join mt-6 w-full max-w-md mx-auto">
               {/* Input */}
               <input
                 type="text"
@@ -157,6 +164,7 @@ const Footer = () => {
 
               {/* Button */}
               <button
+
                 className="
     btn join-item 
     px-3 
@@ -172,9 +180,9 @@ const Footer = () => {
     transition-all duration-300 ease-out
   "
               >
-                Search Now
+                subscribe now
               </button>
-            </div>
+            </form>
           </div>
         </div>
 

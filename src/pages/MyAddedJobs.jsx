@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import LodingSpinner from "../components/LodingSpinner";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Swal from "sweetalert2";
 
 const MyAddedJobs = () => {
   const { user } = useAuth();
@@ -40,18 +41,52 @@ const MyAddedJobs = () => {
       <LodingSpinner></LodingSpinner>;
       return;
     }
-    apise.delete(`jobs/${id}?email=${user.email}`).then((result) => {
-      console.log("Data Delet Now", result.data);
-      setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
-      toast.success("Delet Successfully");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Delete This Jobs Post From Database",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        apise.delete(`jobs/${id}?email=${user.email}`).then((result) => {
+          console.log("Data Delet Now", result.data);
+          setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
+          toast.success("Delet Successfully");
+        });
+      }
     });
   };
 
   const handleDelete2 = (id) => {
-    apise.delete(`jobs/${id}`).then((result) => {
-      console.log("Data Delet Now", result.data);
-      setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
-      toast.success("Delet Successfully");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Delete This Jobs Post From Database",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        apise.delete(`jobs/${id}`).then((result) => {
+          console.log("Data Delet Now", result.data);
+          setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
+          toast.success("Delet Successfully");
+        });
+      }
     });
   };
 
@@ -82,52 +117,54 @@ const MyAddedJobs = () => {
 
           {/* Body */}
           <div className="divide-y divide-gray-200">
-            {jobs.length === 0
-              ? <h1 className=" py-15 text-center"> No Jobs Post You</h1>
-              : jobs.map((job, index) => (
-                  <div
-                    key={index}
-                    className="grid grid-cols-1 md:grid-cols-6 items-center px-6 py-4 hover:bg-gray-50 transition"
-                  >
-                    {/* Job Info */}
-                    <div className="flex items-center space-x-4 col-span-2">
-                      <img
-                        src={job.coverImage}
-                        className="w-14 h-14 rounded-md object-cover border border-gray-300"
-                      />
-                      <div>
-                        <h3 className="text-sm font-semibold text-gray-800">
-                          {job.title}
-                        </h3>
-                        <p className="text-xs w-[250px] text-gray-500 line-clamp-1">
-                          {job.summary}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="text-sm text-gray-600">{job.category}</div>
-                    <div className="text-sm text-gray-600">{job.postedBy}</div>
-                    <div className="text-sm text-gray-600">{job.userEmail}</div>
-
-                    {/* Actions */}
-                    <div className="flex justify-end gap-2 mt-3 md:mt-0">
-                      <Link
-                        to={`/edit/${job._id}`}
-                        className="flex items-center gap-1 bg-orange-500 text-white text-xs px-3 py-2 rounded-md hover:bg-orange-600 transition"
-                      >
-                        <PencilIcon className="w-4 h-4" />
-                        Edit
-                      </Link>
-                      <button
-                        onClick={() => handleDelete1(job._id)}
-                        className="flex items-center gap-1 bg-orange-100 text-orange-600 text-xs px-3 py-2 rounded-md hover:bg-orange-200 transition"
-                      >
-                        <TrashIcon className="w-4 h-4" />
-                        Delete
-                      </button>
+            {jobs.length === 0 ? (
+              <h1 className=" py-15 text-center"> No Jobs Post You</h1>
+            ) : (
+              jobs.map((job, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-1 md:grid-cols-6 items-center px-6 py-4 hover:bg-gray-50 transition"
+                >
+                  {/* Job Info */}
+                  <div className="flex items-center space-x-4 col-span-2">
+                    <img
+                      src={job.coverImage}
+                      className="w-14 h-14 rounded-md object-cover border border-gray-300"
+                    />
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-800">
+                        {job.title}
+                      </h3>
+                      <p className="text-xs w-[250px] text-gray-500 line-clamp-1">
+                        {job.summary}
+                      </p>
                     </div>
                   </div>
-                ))}
+
+                  <div className="text-sm text-gray-600">{job.category}</div>
+                  <div className="text-sm text-gray-600">{job.postedBy}</div>
+                  <div className="text-sm text-gray-600">{job.userEmail}</div>
+
+                  {/* Actions */}
+                  <div className="flex justify-end gap-2 mt-3 md:mt-0">
+                    <Link
+                      to={`/edit/${job._id}`}
+                      className="flex items-center gap-1 bg-orange-500 text-white text-xs px-3 py-2 rounded-md hover:bg-orange-600 transition"
+                    >
+                      <PencilIcon className="w-4 h-4" />
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => handleDelete1(job._id)}
+                      className="flex items-center gap-1 bg-orange-100 text-orange-600 text-xs px-3 py-2 rounded-md hover:bg-orange-200 transition"
+                    >
+                      <TrashIcon className="w-4 h-4" />
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
